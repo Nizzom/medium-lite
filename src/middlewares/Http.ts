@@ -1,6 +1,7 @@
 import bodyParser from "body-parser";
 import { Application } from "express";
 import flash from "express-flash";
+import expressValidator from "express-validator"
 import Locals from "../providers/Locals";
 import Log from "./Log";
 import session from "express-session";
@@ -25,6 +26,7 @@ class Http {
     );
 
     _express.disable("x-powered-by");
+    _express.use(expressValidator());
     _express.use(flash());
     _express.use(
       session({

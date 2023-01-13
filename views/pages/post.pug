@@ -1,0 +1,15 @@
+extends ../layout.pug
+
+block content
+    h1 #{title}
+    h3 #{post.title}
+    br
+    p #{post.readTime} min, Post rating #{post.rating} 
+    br
+    p #{post.content}
+    br
+    a(href=`/rating?id=${post.id}&value=up`) Rating Up /\ 
+        span 
+    a(href=`/rating?id=${post.id}&value=down`) Rating Down \/
+    a(href="/") 
+    a(href="/") Home

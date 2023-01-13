@@ -1,0 +1,17 @@
+extends ../layout.pug
+
+block content
+    if successes
+      for success in successes
+        p #{ success }
+    if errors
+      for error, i in errors
+        p #{ error }
+    h1 #{title}
+    form#loginForm(name='loginform', novalidate='novalidate', action='/login', method='POST')
+        label(for='login-email') Email Address
+        input#login-email.form-control(type='email', name='email', placeholder='Email Address', required='required', data-validation-required-message='Please enter your email address.', autocomplete='email')
+        label(for='login-password') Password
+        input#login-password.form-control(type='password', name='password', placeholder='Password', required='required', data-validation-required-message='Please enter password.', autocomplete='new-password')
+        button#loginButton.btn.btn-primary.btn-xl(type='submit') Login
+    a(href="/register") Register 

@@ -1,0 +1,13 @@
+extends ../layout.pug
+
+block content
+    h1 #{title}
+    form#singupForm(name='addPostForm' novalidate='novalidate' action='/post' method='POST')
+        input(type='hidden' name='_csrf', value=_csrf)
+        label(for='add-post-title') Post Title
+        input#signup-email.form-control(type='text' name='title' placeholder='Post Title' required='required' data-validation-required-message='Please enter your post Title.')
+        label(for='add-post-content') Post Content
+        input#signup-password.form-control(type='text' name='content' placeholder='Post Content' required='required' data-validation-required-message='Please enter post content.')
+        input#signup-confirmPassword.form-control(type='text' name='author' hidden='true' value=userId  required='required')
+        button#registerButton.btn.btn-primary.btn-xl(type='submit') Add
+    a(href="/") Home

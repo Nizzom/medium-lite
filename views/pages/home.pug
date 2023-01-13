@@ -1,0 +1,21 @@
+extends ../layout.pug
+
+block content
+    h1 #{title}
+    h3 Last Users
+    ul
+        each user in users
+            li #{user.email} 
+                b rating #{user.rating}
+    h3 Last Posts
+    ul
+        each post in posts
+            if post
+                li #{post.title}. 
+                    b #{post.readTime} min
+                    a(href=`/post/${post.id}`) Go to #{post.title}
+    a(href="/posts") All Posts
+    br
+    a(href="/post") Add Post
+    br
+    a(href="/logout") Logout

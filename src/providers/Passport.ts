@@ -5,7 +5,7 @@ import Log from "../middlewares/Log";
 import User from "../models/User";
 
 type TUser = {
-  _id?: number;
+  id?: number;
 };
 
 class Passport {
@@ -14,13 +14,15 @@ class Passport {
     _express = _express.use(passport.session());
 
     passport.serializeUser((user: TUser, done) => {
-      done(null, user._id);
+      done(null, user.id);
     });
 
     passport.deserializeUser<any, any>((id, done) => {
-      User.findOne(id, (err: any, user: any) => {
-        done(err, user);
-      });
+      User.findOne(id).then(user=>{
+        done(null, user);
+      }).catch(err=>{
+        done(err);
+      }) 
     });
 
     this.mountLocalStrategies();

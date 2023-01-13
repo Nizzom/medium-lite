@@ -19,9 +19,6 @@ class App {
     Log.info(`${App.name}:${this.loadDatabase.name}...`);
 
     Database.init();
-
-    User.createUserTable();
-    Post.createPostTable();
   }
 }
 export default new App();
